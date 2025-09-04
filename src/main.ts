@@ -13,7 +13,7 @@ const app = new Hono()
 
 serve({
     fetch: app.fetch,
-    port: 3000
+    port: process.env.PORT ? Number(process.env.PORT) : 3000,
 }, (info) => {
     console.log(`Server is running on http://localhost:${info.port}`)
 })

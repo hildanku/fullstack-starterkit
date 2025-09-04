@@ -6,7 +6,6 @@ import { FOUND, NOT_FOUND, SOMETHING_WHEN_WRONG } from '../../lib/constant.js'
 export const userController = new Hono()
     .get('/', async (c) => {
         const userRepo = new UserRepository()
-
         try {
             const users = await userRepo.list()
             if (!users || users.length === 0) {

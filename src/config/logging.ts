@@ -43,7 +43,6 @@ export const drizzleLogger: Logger = {
                 .join('\n')}
                 =======================
         `
-
         logger.info(logMessage)
     },
 }

@@ -1,3 +1,3 @@
-export const NOT_FOUND = 'is Not Found'
-export const FOUND = 'is Found'
-export const SOMETHING_WHEN_WRONG = 'Something when wrong'
+export const NOT_FOUND = 'Not Found'
+export const FOUND = 'Found'
+export const SOMETHING_WHEN_WRONG = 'Something When Wrong'

@@ -1,6 +1,6 @@
-import type { BaseRepository } from '../../lib/repository.js'
-import { userTable, type User } from '../../config/db/schema.js'
 import { db } from '../../config/db/index.js'
+import { userTable, type User } from '../../config/db/schema/postgres.js'
+import type { BaseRepository } from '../../lib/repository.js'
 import { eq } from 'drizzle-orm'
 
 export interface UserEntity extends User { }
@@ -9,7 +9,7 @@ export type FindByID = {
     id: number
 }
 
-export class UserRepository implements BaseRepository<UserEntity> {
+export class UserRepository implements Omit<BaseRepository<UserEntity>, 'findByX'> {
 
     user: UserEntity[] = []
 
@@ -26,7 +26,7 @@ export class UserRepository implements BaseRepository<UserEntity> {
         const insertUser = await db
             .insert(userTable)
             .values(data as any)
-            .$returningId()
+            .returning()
 
         const user = await this.findById({ id: insertUser[0].id })
 
