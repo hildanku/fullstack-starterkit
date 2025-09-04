@@ -1,0 +1,26 @@
+{
+    "name": "hono-template",
+    "type": "module",
+    "scripts": {
+        "dev": "tsx watch src/main.ts",
+        "test": "jest"
+    },
+    "dependencies": {
+        "@hono/node-server": "^1.14.0",
+        "dotenv": "^16.6.1",
+        "drizzle-orm": "^0.41.0",
+        "hono": "^4.7.5",
+        "mysql2": "^3.14.0",
+        "pg": "^8.16.3",
+        "postgres": "^3.4.7",
+        "winston": "^3.17.0",
+        "zod": "^3.24.2"
+    },
+    "devDependencies": {
+        "@types/node": "^20.11.17",
+        "drizzle-kit": "^0.31.4",
+        "ts-node": "^10.9.2",
+        "tsx": "^4.19.3",
+        "vitest": "^3.1.1"
+    }
+}
