@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { db } from '../../config/db/index.js'
-import { userTable } from '../../config/db/schema.js'
+import { userTable } from '../../config/db/schema/postgres.js'
 import { eq } from 'drizzle-orm'
 import { UserRepository } from '../../modules/user/user.repository.js'
 
@@ -95,7 +95,7 @@ describe('UserRepository', () => {
                 username: 'newuser',
                 name: 'New User',
                 email: 'new@example.com',
-                role: 'operator'
+                // role: 'member'
             }
 
             const mockInsertChain = {
