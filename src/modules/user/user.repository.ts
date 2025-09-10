@@ -1,5 +1,6 @@
 import { db } from '../../config/db/index.js'
 import { userTable, type User } from '../../config/db/schema/postgres.js'
+import { JWTService } from '../../lib/middleware/jwt.js'
 import type { BaseRepository } from '../../lib/repository.js'
 import { eq } from 'drizzle-orm'
 
@@ -8,10 +9,36 @@ export interface UserEntity extends User { }
 export type FindByID = {
     id: number
 }
+export type FindByToken = {
+    token: string
+}
 
-export class UserRepository implements Omit<BaseRepository<UserEntity>, 'findByX'> {
+export type FindByUsername = {
+    username: string
+}
+
+
+export class UserRepository implements Omit<BaseRepository<UserEntity>, 'findByToken'> {
 
     user: UserEntity[] = []
+
+    async findByUsername(data: FindByUsername): Promise<UserEntity[]> {
+        const user = await db
+            .select()
+            .from(userTable)
+            .where(eq(userTable.username, data.username))
+
+        this.user = user
+        return user
+    }
+
+    async findByToken(args: FindByToken) {
+        const claims = JWTService.decode(args.token)
+        if (claims && claims.sub) {
+            return this.findById({ id: Number(claims.sub) })
+        }
+        return null
+    }
 
     async findById(data: FindByID): Promise<UserEntity | null> {
         const user = await db

@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { logger } from '../config/logging.js'
 
 // Mock Winston Console Transport
-const logSpy = vi.spyOn(process.stdout, 'write')
+const logSpy = vi.spyOn((console as any)._stdout, 'write')
 
 describe('Logger', () => {
     beforeEach(() => {

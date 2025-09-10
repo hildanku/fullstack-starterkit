@@ -5,7 +5,7 @@
         "dev": "tsx watch src/main.ts",
         "build": "tsc",
         "start": "node dist/main.js",
-        "test": "jest"
+        "test": "vitest"
     },
     "dependencies": {
         "@hono/node-server": "^1.14.0",
