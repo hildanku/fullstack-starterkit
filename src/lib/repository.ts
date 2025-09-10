@@ -1,7 +1,7 @@
-export interface BaseRepository<TEntity, TCreate = Partial<TEntity>, TUpdate = Partial<TEntity>> {
-    create(data: TCreate): Promise<TEntity>
-    read(id: number): Promise<TEntity | null>
-    update(id: number, data: TUpdate): Promise<TEntity>
+export interface BaseRepository<T> {
+    create(data: Partial<T>): Promise<T>
+    read(id: number): Promise<T | null>
+    update(id: number, data: Partial<T>): Promise<T>
     delete(id: number): Promise<boolean>
-    list(): Promise<TEntity[]>
+    list(): Promise<T[]>
 }

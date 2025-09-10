@@ -3,8 +3,8 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import csv from "csv-parser";
-import { db } from "../index.js";
-import { userTable, type User } from "../schema/postgres.js";
+import { db } from "../../config/db/index.js";
+import { userTable, type User } from "../../config/db/schema/postgres.js";
 
 // ESM fix untuk __dirname
 const __filename = fileURLToPath(import.meta.url);
