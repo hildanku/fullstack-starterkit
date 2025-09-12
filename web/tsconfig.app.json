@@ -13,7 +13,10 @@
         "paths": {
             "@/*": [
                 "./src/*"
-            ]
+            ],
+            "@/root/*": [
+                "../*"
+            ],
         },
         "module": "ESNext",
         "skipLibCheck": true,
